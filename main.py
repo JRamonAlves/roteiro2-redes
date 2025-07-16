@@ -1,4 +1,3 @@
-
 def xor_bits(a: str, b: str) -> str:
     """
     Realiza a operação de XOR bit a bit entre duas strings binárias de mesmo
@@ -63,21 +62,20 @@ def calcular_crc_manual(dados_bits: str, gerador_bits: str) -> str:
 
 
 def main():
-    # Dados do exemplo
-    dados = "110101"
-    gerador = "1011"  # Representa o polinômio x^3 + x + 1
+    dados_teste = "1101011111"  # M(x)
+    gerador_teste = "10011"    # G(x), representa x^4 + x + 1
 
-# Calcular o CRC
-    crc_resultado = calcular_crc_manual(dados, gerador)
+# Calcular o CRC com os dados de teste
+    crc_calculado = calcular_crc_manual(dados_teste, gerador_teste)
 
-# Exibir os resultados
-    print(f"Mensagem Original (M(x)): {dados}")
-    print(f"Polinômio Gerador (G(x)): {gerador}")
-    print(f"CRC Calculado (Resto): {crc_resultado}")
+    print("--- Validação do Algoritmo CRC ---")
+    print(f"Dados M(x):    {dados_teste}")
+    print(f"Gerador G(x):  {gerador_teste}")
+    print(f"CRC Calculado: {crc_calculado}")
 
-# Para verificação, a mensagem transmitida seria os dados originais + CRC
-    mensagem_transmitida = dados + crc_resultado
-    print(f"Mensagem a ser Transmitida (T(x)): {mensagem_transmitida}")
+# O quadro T(x) a ser transmitido é a mensagem original concatenada com o CRC
+    quadro_transmitido = dados_teste + crc_calculado
+    print(f"Quadro T(x):   {quadro_transmitido}")
 
 
 if __name__ == "__main__":
